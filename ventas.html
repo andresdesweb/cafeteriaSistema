@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Punto de Venta</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+</head>
+<body>
+
+    <div class="nav">
+        <a href="index">← Volver al Menú Principal</a>
+    </div>
+
+    <div class="contenedor">
+        <!-- Sección de Menú Disponible -->
+        <div class="panel" style="flex: 1.5;">
+            <h2>Menú Disponible</h2>
+            
+            <!-- NUEVO: Campo de búsqueda -->
+            <input type="text" id="buscador" placeholder="🔍 Buscar producto por nombre...">
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpoMenu">
+                    <!-- Productos inyectados por JS -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Sección del Ticket (Carrito) -->
+        <div class="panel" style="flex: 1;">
+            <h2>Ticket de Compra</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Cant.</th>
+                        <th>Producto</th>
+                        <th>Subtotal</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpoTicket">
+                    <!-- Items del carrito -->
+                </tbody>
+            </table>
+            
+            <div class="total-container">
+                Total: $<span id="totalVenta">0.00</span>
+            </div>
+            
+            <button id="btnCobrar" class="btn-cobrar" onclick="procesarVenta()">Completar Venta</button>
+        </div>
+    </div>
+
+    <script src="js/ventas.js"></script>
+</body>
+</html>

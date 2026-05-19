@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# Si lo que se busca no es un archivo real existente...
+RewriteCond %{REQUEST_FILENAME} !-f
+# ...ni un directorio real existente...
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# ...entonces agrégale .html internamente de forma invisible
+RewriteRule ^(.*)$ $1.html [L,QSA]

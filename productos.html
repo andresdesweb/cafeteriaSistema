@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Productos</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+</head>
+<body>
+
+    <div class="nav">
+        <a href="index">← Volver al Menú Principal</a>
+    </div>
+
+    <div class="contenedor">
+        <!-- Sección de Captura -->
+        <div class="panel">
+            <h2>Nuevo Producto</h2>
+            <form id="formProducto">
+                <input type="text" id="nombre" placeholder="Nombre" required>
+                <textarea id="descripcion" placeholder="Descripción" required></textarea>
+                <input type="number" id="precio" placeholder="Precio" step="0.01" required>
+                <input type="number" id="stock" placeholder="Stock Inicial" required>
+                <button type="submit">Guardar Producto</button>
+            </form>
+            <div id="mensaje"></div>
+        </div>
+
+        <!-- Sección de Inventario -->
+        <div class="panel" style="flex: 2;">
+            <h2>Inventario Actual</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Acciones</th> <!-- Nueva columna -->
+                    </tr>
+                </thead>
+                <tbody id="cuerpoTabla">
+                    <!-- Productos inyectados por JS -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="js/productos.js"></script>
+</body>
+</html>

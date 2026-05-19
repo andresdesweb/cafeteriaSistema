@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Resumen de Ventas</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <style>
+        /* Estilos específicos para la barra de herramientas del resumen */
+        .toolbar { display: flex; gap: 10px; margin-bottom: 20px; align-items: center; flex-wrap: wrap; }
+        .toolbar input[type="date"] { width: auto; margin-bottom: 0; }
+        .toolbar button { width: auto; margin-bottom: 0; padding: 8px 15px; }
+        .spacer { flex-grow: 1; }
+        .btn-limpiar { background-color: #6c757d; }
+        .btn-exportar { background-color: #28a745; }
+        .btn-exportar:hover { background-color: #218838; }
+        .btn-imprimir { background-color: #17a2b8; }
+        .btn-imprimir:hover { background-color: #138496; }
+    </style>
+</head>
+<body>
+
+    <div class="nav">
+        <a href="index">← Volver al Menú Principal</a>
+    </div>
+
+    <div class="panel panel-centrado">
+        <h2>Historial de Ventas</h2>
+        
+        <!-- Barra de Controles -->
+        <div class="toolbar">
+            <label for="filtroFecha"><strong>Día:</strong></label>
+            <input type="date" id="filtroFecha">
+            <button id="btnLimpiarFiltro" class="btn-limpiar">Todas</button>
+            
+            <div class="spacer"></div> <!-- Empuja los siguientes botones a la derecha -->
+            
+            <button id="btnExportar" class="btn-exportar">📥 Exportar a Excel</button>
+            <button id="btnImprimir" class="btn-imprimir">🖨️ Imprimir</button>
+        </div>
+
+        <!-- Tabla con un ID añadido para poder exportarla e imprimirla fácilmente -->
+        <table id="tablaResumen">
+            <thead>
+                <tr>
+                    <th>Folio (ID)</th>
+                    <th>Fecha y Hora</th>
+                    <th>Total Cobrado</th>
+                    <th class="columna-acciones">Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="cuerpoVentas">
+                <!-- Las ventas se inyectarán aquí -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- El Modal para los Detalles (Se queda igual) -->
+    <div id="modalDetalle" class="modal">
+        <div class="modal-content">
+            <span class="cerrar-modal" onclick="cerrarModal()">&times;</span>
+            <h2 id="tituloModal">Detalle de Venta</h2>
+            <table>
+                <thead>
+                    <tr><th>Cant.</th><th>Producto</th><th>Subtotal</th></tr>
+                </thead>
+                <tbody id="cuerpoDetalle"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="js/resumen.js"></script>
+</body>
+</html>

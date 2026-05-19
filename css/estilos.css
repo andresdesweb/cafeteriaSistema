@@ -1,0 +1,73 @@
+/* =========================================
+   ESTILOS GENERALES
+   ========================================= */
+   body { font-family: sans-serif; padding: 20px; background-color: #f9f9f9; }
+   body.menu-principal { text-align: center; padding: 50px; }
+   
+   h1, h2 { color: #333; }
+   
+   .nav { margin-bottom: 20px; }
+   .nav a { text-decoration: none; color: #007BFF; font-weight: bold; }
+   
+   .contenedor { display: flex; gap: 20px; align-items: flex-start; }
+   .panel { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); flex: 1; }
+   .panel-centrado { max-width: 800px; margin: 0 auto; }
+   
+   /* =========================================
+      FORMULARIOS Y BOTONES
+      ========================================= */
+   input, textarea, button { width: 100%; margin-bottom: 15px; padding: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; }
+   button { background-color: #007BFF; color: white; border: none; cursor: pointer; }
+   button:hover { background-color: #0056b3; }
+   
+   .btn-agregar { background-color: #28a745; width: auto; padding: 5px 10px; }
+   .btn-agregar:hover { background-color: #218838; }
+   .btn-eliminar { background-color: #dc3545; width: auto; padding: 5px 10px; }
+   .btn-eliminar:hover { background-color: #c82333; }
+   .btn-editar { background-color: #17a2b8; width: auto; padding: 5px 10px; font-size: 0.9em; }
+   .btn-editar:hover { background-color: #138496; }
+   .btn-cobrar { background-color: #ffc107; color: black; font-size: 1.2em; font-weight: bold; margin-top: 15px; }
+   .btn-detalles { background-color: #6c757d; color: white; width: auto; padding: 5px 10px; }
+   .btn-detalles:hover { background-color: #5a6268; }
+   
+   /* =========================================
+      TABLAS
+      ========================================= */
+   table { width: 100%; border-collapse: collapse; margin-top: 5px; font-size: 0.9em; }
+   th, td { border-bottom: 1px solid #ccc; padding: 10px; text-align: left; }
+   th { background-color: #f4f4f4; }
+   .total-container { text-align: right; margin-top: 20px; font-size: 1.5em; font-weight: bold; }
+   
+   /* =========================================
+      MENÚ PRINCIPAL (Tarjetas)
+      ========================================= */
+   .menu-container { display: flex; justify-content: center; gap: 30px; margin-top: 40px; }
+   .card { background: white; padding: 40px 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); width: 250px; text-decoration: none; color: #333; font-weight: bold; font-size: 1.2em; border: 2px solid transparent; transition: all 0.3s ease; }
+   .card:hover { border-color: #007BFF; color: #007BFF; transform: translateY(-5px); }
+   
+   /* =========================================
+      MODAL (Resumen de ventas)
+      ========================================= */
+   .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); align-items: center; justify-content: center; }
+   .modal-content { background-color: #fff; padding: 20px; border-radius: 8px; width: 90%; max-width: 500px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); position: relative; }
+   .cerrar-modal { position: absolute; top: 10px; right: 15px; color: #aaa; font-size: 24px; font-weight: bold; cursor: pointer; }
+   .cerrar-modal:hover { color: #000; }
+   /* =========================================
+   ESTILOS PARA IMPRESIÓN EN PAPEL
+   ========================================= */
+@media print {
+    /* Ocultamos navegación, barra de herramientas y la columna de acciones */
+    .nav, .toolbar, .columna-acciones, .btn-detalles {
+        display: none !important;
+    }
+    body {
+        background-color: white;
+        padding: 0;
+    }
+    .panel {
+        box-shadow: none;
+        width: 100%;
+        max-width: 100%;
+        padding: 0;
+    }
+}
