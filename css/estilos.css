@@ -71,3 +71,208 @@
         padding: 0;
     }
 }
+
+/* =========================================
+   NUEVO DISEÑO POS (PUNTO DE VENTA)
+   ========================================= */
+   .pos-layout {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      height: calc(100vh - 120px); /* Ajuste para no hacer scroll en toda la página */
+  }
+  
+  /* Área principal (Filtros y Cuadrícula) */
+  .pos-main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+  }
+  
+  .pos-categorias {
+      display: flex;
+      gap: 15px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+  }
+  
+  .btn-categoria {
+      background: white;
+      border: 1px solid #ddd;
+      padding: 10px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      color: #555;
+      transition: all 0.2s;
+      width: auto;       /* <-- Agrega esto */
+       margin-bottom: 0;  /* <-- Agrega esto */
+  }
+  
+  .btn-categoria.activa {
+      background: #006b3f; /* Verde estilo Starbucks/Green Grounds */
+      color: white;
+      border-color: #006b3f;
+  }
+  
+  /* Cuadrícula de Productos */
+  .pos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 20px;
+      overflow-y: auto;
+      padding-right: 10px;
+  }
+  
+  .producto-card {
+      background: white;
+      border-radius: 16px;
+      padding: 15px;
+      position: relative;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+      border: 1px solid #f0f0f0;
+      transition: transform 0.2s;
+  }
+  
+  .producto-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.08);
+  }
+  
+  .producto-img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 10px;
+      background-color: #f8f9fa; /* Color de fondo si no hay foto */
+  }
+  
+  .producto-info h3 {
+      margin: 0 0 5px 0;
+      font-size: 1.1em;
+      color: #333;
+  }
+  
+  .producto-info p {
+      margin: 0;
+      color: #777;
+      font-weight: bold;
+  }
+  
+  .btn-add-circular {
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #006b3f;
+      color: white;
+      border: none;
+      font-size: 1.5em;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+  }
+  
+  .btn-add-circular:hover {
+      background-color: #004d2d;
+  }
+  
+  /* Barra Lateral (Ticket/Carrito) */
+  .pos-sidebar {
+      width: 350px;
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      box-sizing: border-box;
+  }
+  
+  .pos-sidebar h2 {
+      margin-top: 0;
+      font-size: 1.4em;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 15px;
+  }
+  
+  .cart-items {
+      flex: 1;
+      overflow-y: auto;
+      margin-bottom: 20px;
+  }
+  
+  .cart-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px dashed #eee;
+  }
+  
+  .cart-item-img {
+      width: 50px;
+      height: 50px;
+      border-radius: 8px;
+      object-fit: cover;
+  }
+  
+  .cart-item-info {
+      flex: 1;
+  }
+  
+  .cart-item-info h4 { margin: 0 0 5px 0; font-size: 1em; }
+  .cart-item-info p { margin: 0; color: #777; font-size: 0.9em; }
+  
+  .cart-item-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+  }
+  
+  .cart-item-actions button {
+      width: 25px;
+      height: 25px;
+      padding: 0;
+      margin: 0;
+      border-radius: 5px;
+      background: #f0f0f0;
+      color: #333;
+  }
+  
+  .cart-item-actions button.btn-remove {
+      background: #ffebe9;
+      color: #dc3545;
+  }
+  
+  .cart-total-section {
+      background: #f9f9f9;
+      padding: 15px;
+      border-radius: 12px;
+      margin-bottom: 15px;
+  }
+  
+  .cart-total-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.2em;
+      font-weight: bold;
+  }
+  
+  .btn-cobrar-pos {
+      background-color: #006b3f;
+      color: white;
+      font-size: 1.2em;
+      padding: 15px;
+      border-radius: 12px;
+      width: 100%;
+  }
+  .btn-cobrar-pos:hover { background-color: #004d2d; }

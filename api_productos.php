@@ -2,11 +2,13 @@
 require 'conexion.php';
 header('Content-Type: application/json');
 
-// Solo aceptamos peticiones POST para guardar
+// --- CÓDIGO PARA POST (Guardar Nuevo Producto) ---
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = json_decode(file_get_contents("php://input"), true);
     
-    $sql = "INSERT INTO productos (nombre, descripcion, precio, stock) VALUES (:nombre, :descripcion, :precio, :stock)";
+    // Agregamos categoria e imagen_url a la consulta
+    $sql = "INSERT INTO productos (nombre, descripcion, precio, stock, categoria, imagen_url) 
+            VALUES (:nombre, :descripcion, :precio, :stock, :categoria, :imagen_url)";
     $stmt = $conn->prepare($sql);
     
     try {
@@ -14,36 +16,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ':nombre' => $data['nombre'],
             ':descripcion' => $data['descripcion'],
             ':precio' => $data['precio'],
-            ':stock' => $data['stock']
+            ':stock' => $data['stock'],
+            ':categoria' => $data['categoria'],
+            ':imagen_url' => $data['imagen_url']
         ]);
         echo json_encode(["status" => "success", "message" => "Producto registrado exitosamente."]);
     } catch (Exception $e) {
-        echo json_encode(["status" => "error", "message" => "Error al guardar el producto."]);
+        echo json_encode(["status" => "error", "message" => "Error al guardar el producto: " . $e->getMessage()]);
     }
 }
 
+// --- CÓDIGO PARA GET (Consultar Inventario) ---
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     try {
-        // Consultamos solo los productos activos
-        $sql = "SELECT id, nombre, descripcion, precio, stock FROM productos WHERE activo = TRUE";
+        // Agregamos categoria e imagen_url al SELECT
+        $sql = "SELECT id, nombre, descripcion, precio, stock, categoria, imagen_url 
+                FROM productos WHERE activo = TRUE";
         $stmt = $conn->query($sql);
-        
-        // Obtenemos los resultados como un arreglo asociativo
         $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
-        // Retornamos el JSON con la lista
         echo json_encode($productos);
     } catch (Exception $e) {
         echo json_encode(["error" => "Error al consultar los productos: " . $e->getMessage()]);
     }
 }
 
-// --- NUEVO CÓDIGO PARA PUT (Actualizar Stock) ---
+// --- CÓDIGO PARA PUT (Actualizar Stock) ---
 if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
-    // Obtenemos los datos enviados en formato JSON
     $data = json_decode(file_get_contents("php://input"), true);
     
-    // Verificamos que nos hayan enviado el ID y el nuevo stock
     if (isset($data['id']) && isset($data['stock'])) {
         $sql = "UPDATE productos SET stock = :stock WHERE id = :id";
         $stmt = $conn->prepare($sql);
